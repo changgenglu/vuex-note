@@ -1,8 +1,11 @@
-import Vue from "vue";
+import { createApp } from "vue";
+import { createStore } from "vuex";
 import App from "./App.vue";
-import store from "./store";
+import storeModule from "./store";
 
-new Vue({
-  store,
-  render: (h) => h(App),
-}).$mount("#app");
+const store = createStore(storeModule);
+
+const app = createApp(App);
+
+app.use(store);
+app.mount("#app");
