@@ -7,8 +7,8 @@ const store_module = {
     Loaded(state) {
       state.is_loading = !state.is_loading;
     },
-    addTimes(state) {
-      state.clicked_times += 1;
+    addTimes(state, payload) {
+      state.clicked_times = state.clicked_times + payload;
     },
     resetCounter(state) {
       state.clicked_times = 0;

@@ -24,9 +24,11 @@ export default {
     methods: {
         ...mapMutations([
             "Loaded",
-            "addTimes",
             "resetCounter"
         ]),
+        addTimes() {
+            return this.$store.commit('addTimes', 2);
+        }
     }
 }
 </script>
