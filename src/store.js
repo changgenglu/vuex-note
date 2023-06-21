@@ -1,10 +1,17 @@
-const storeModule = {
+const store_module = {
   state: {
-    isLoading: false,
+    is_loading: false,
+    clicked_times: 0,
   },
   mutations: {
     Loaded(state) {
-      state.isLoading = !state.isLoading;
+      state.is_loading = !state.is_loading;
+    },
+    addTimes(state) {
+      state.clicked_times += 1;
+    },
+    resetCounter(state) {
+      state.clicked_times = 0;
     },
   },
   actions: {
@@ -15,5 +22,4 @@ const storeModule = {
   },
 };
 
-
-export default storeModule;
+export default store_module;
