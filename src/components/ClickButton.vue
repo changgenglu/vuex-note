@@ -2,7 +2,7 @@
     <div>
         <p>author: {{ author }}</p>
         <p>Loading: {{ is_loading }}</p>
-        <button @click="Loaded(), addTimes()">Reverse</button>
+        <button @click="Loaded(), addTimes(6)">Reverse</button>
         <p>Click Times: {{ clicked_times }}</p>
         <button @click="resetCounter()">Reset Counter</button>
     </div>
@@ -26,8 +26,11 @@ export default {
             "Loaded",
             "resetCounter"
         ]),
-        addTimes() {
-            return this.$store.commit('addTimes', 2);
+        addTimes(times) {
+            return this.$store.commit({
+                type: "addTimes",
+                count: times
+            });
         }
     }
 }
