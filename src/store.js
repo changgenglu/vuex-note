@@ -28,7 +28,7 @@ const store_module = {
   },
   actions: {
     // 異步操作或觸發多個 mutations 的方法
-    getUser(context) {
+    get_user(context) {
       axios
         .get("https://randomuser.me/api/")
         .then((response) => {

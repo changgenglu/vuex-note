@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex';
+import { mapMutations, mapState, mapActions } from 'vuex';
 
 export default {
     computed: {
@@ -29,16 +29,17 @@ export default {
             "Loaded",
             "resetCounter"
         ]),
+        ...mapActions(["get_user", "clicked_actions"]),
         addTimes() {
-            this.$store.dispatch('clicked_actions', 1)
+            this.clicked_actions(1);
         },
         Reload() {
             this.$store.commit("initLoading");
-            this.$store.dispatch("getUser");
+            this.get_user();
         }
     },
     mounted() {
-        this.$store.dispatch('getUser');
+        this.get_user();
     },
 }
 </script>
