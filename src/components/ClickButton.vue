@@ -12,8 +12,12 @@ import { mapState } from 'vuex';
 
 export default {
     computed: mapState({
-        ifLoading: 'is_loading',
-        clicked: 'clicked_times'
+        ifLoading(state) {
+            return state.is_loading;
+        },
+        clicked(state) {
+            return state.clicked_times;
+        }
     }),
     methods: {
         reverseLoad() {
