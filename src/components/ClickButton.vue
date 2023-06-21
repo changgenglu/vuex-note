@@ -29,11 +29,8 @@ export default {
             "Loaded",
             "resetCounter"
         ]),
-        addTimes(times) {
-            return this.$store.commit({
-                type: "addTimes",
-                count: times
-            });
+        addTimes() {
+            this.$store.dispatch('clicked_actions', 1)
         },
         Reload() {
             this.$store.commit("initLoading");

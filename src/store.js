@@ -45,6 +45,12 @@ const store_module = {
     another_actions() {
       console.log("do another actions");
     },
+    clicked_actions(context, times) {
+        context.commit({
+            type: "addTimes",
+            count: times
+        });
+    },
   },
   modules: {
     // 巢狀的組件
