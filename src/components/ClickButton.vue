@@ -1,10 +1,8 @@
 <template>
     <div>
-        <!-- <p>Loading: {{ ifLoading }}</p> -->
-        <p>Loading: {{ is_loading }}</p>
+        <p>Loading: {{ ifLoading }}</p>
         <button @click="reverseLoad(), addTimes()">Reverse</button>
-        <!-- <p>Click Times: {{ clicked }}</p> -->
-        <p>Click Times: {{ clicked_times }}</p>
+        <p>Click Times: {{ clicked }}</p>
         <button @click="resetCounter()">Reset Counter</button>
     </div>
 </template>
@@ -13,18 +11,10 @@
 import { mapState } from 'vuex';
 
 export default {
-    // computed: {
-    //     ifLoading() {
-    //         return this.$store.state.is_loading;
-    //     },
-    //     clicked() {
-    //         return this.$store.state.clicked_times;
-    //     },
-    // },
-    computed: mapState([
-        'is_loading',
-        'clicked_times'
-    ]),
+    computed: mapState({
+        ifLoading: 'is_loading',
+        clicked: 'clicked_times'
+    }),
     methods: {
         reverseLoad() {
             this.$store.commit("Loaded");
