@@ -32,8 +32,8 @@ const store_module = {
         .get("https://randomuser.me/api/?results=5")
         .then((response) => {
           const user_data = response.data.results;
-          commit('dataLoading');
-          commit('getUser', user_data);
+          commit("dataLoading");
+          commit("getUser", user_data);
         })
         .catch(function (error) {
           console.log(error);
@@ -43,14 +43,21 @@ const store_module = {
       console.log("do another actions");
     },
     clicked_actions(context, times) {
-        context.commit({
-            type: "addTimes",
-            count: times
-        });
+      context.commit({
+        type: "addTimes",
+        count: times,
+      });
     },
   },
   modules: {
     // 巢狀的組件
+  },
+  getters: {
+    FemaleNumber(state) {
+      if (state.user_data) {
+        return state.user_data.filter((item) => item.gender == "female").length;
+      }
+    },
   },
 };
 

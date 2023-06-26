@@ -1,8 +1,8 @@
 <template>
     <div>
         <p>author: {{ author }}</p>
-        <p>random user: {{ FemaleNumber }}</p>
-        <button @click="Reload()">get female number</button>
+        <p>female number: {{ FemaleNumber }}</p>
+        <button @click="Reload()">get user data</button>
         <p>{{ is_loading }}</p>
         <button @click="dataLoading(), addTimes(6)">Reverse</button>
         <p>Click Times: {{ clicked_times }}</p>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState, mapActions } from 'vuex';
+import { mapMutations, mapState, mapActions, mapGetters } from 'vuex';
 
 export default {
     computed: {
@@ -23,10 +23,11 @@ export default {
             'is_loading',
             'clicked_times'
         ]),
-        FemaleNumber() {
-            console.log(this.user_data);
-            return this.user_data.filter(item => item.gender == 'female').length;
-        }
+        ...mapGetters(["FemaleNumber"])
+        // FemaleNumber() {
+        //     console.log(this.user_data);
+        //     return this.user_data.filter(item => item.gender == 'female').length;
+        // }
     },
     methods: {
         ...mapMutations([
@@ -43,7 +44,7 @@ export default {
         }
     },
     mounted() {
-        this.get_user();
+        // this.get_user();
     },
 }
 </script>
