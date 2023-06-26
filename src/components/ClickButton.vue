@@ -2,6 +2,7 @@
     <div>
         <p>author: {{ author }}</p>
         <p>female number: {{ FemaleNumber }}</p>
+        <p>male number: {{ MaleNumber }}</p>
         <button @click="Reload()">get user data</button>
         <p>{{ is_loading }}</p>
         <button @click="dataLoading(), addTimes(6)">Reverse</button>
@@ -23,7 +24,7 @@ export default {
             'is_loading',
             'clicked_times'
         ]),
-        ...mapGetters(["FemaleNumber"])
+        ...mapGetters(["FemaleNumber", "MaleNumber"])
         // FemaleNumber() {
         //     console.log(this.user_data);
         //     return this.user_data.filter(item => item.gender == 'female').length;

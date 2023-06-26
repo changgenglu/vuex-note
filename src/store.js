@@ -56,7 +56,12 @@ const store_module = {
     FemaleNumber(state) {
       if (state.user_data) {
         return state.user_data.filter((item) => item.gender == "female").length;
+      } else {
+        return NaN;
       }
+    },
+    MaleNumber(state, getters) {
+      return state.user_data.length - getters.FemaleNumber;
     },
   },
 };
