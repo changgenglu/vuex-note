@@ -63,6 +63,16 @@ const store_module = {
     MaleNumber(state, getters) {
       return state.user_data.length - getters.FemaleNumber;
     },
+    IsGenderOver2: (state) => (gender) => {
+      if (!state.user_data) {
+        return;
+      }
+      if (state.user_data.filter((item) => item.gender == gender).length > 2) {
+        console.log("there are over 2 " + gender + " in data");
+      } else {
+        console.log("not over 2 " + gender + " in data");
+      }
+    },
   },
 };
 
