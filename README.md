@@ -32,6 +32,6 @@ pnpm run lint
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### Demo
+## Demo
 
 Your site is live at https://changgenglu.github.io/vuex-note/
