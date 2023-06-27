@@ -31,3 +31,7 @@ pnpm run lint
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Demo
+
+Your site is live at https://changgenglu.github.io/vuex-note/
