@@ -11,9 +11,8 @@ const store_module = {
       state.user_data = payload;
       state.is_loading = "done";
     },
-    initLoading(state) {
+    dataLoading(state) {
       state.is_loading = "Loading...";
-      state.user_data = "";
     },
     Loaded(state) {
       state.is_loading = "Loading...";
@@ -28,15 +27,13 @@ const store_module = {
   },
   actions: {
     // 異步操作或觸發多個 mutations 的方法
-    get_user(context) {
+    get_user({ commit }) {
       axios
-        .get("https://randomuser.me/api/")
+        .get("https://randomuser.me/api/?results=5")
         .then((response) => {
-          console.log(response);
-          const user_name = response.data.results[0].name;
-          const user_data = user_name.title + ". " + user_name.first + " " + user_name.last;
-          context.commit("getUser", user_data);
-          context.dispatch("another_actions");
+          const user_data = response.data.results;
+          commit("dataLoading");
+          commit("getUser", user_data);
         })
         .catch(function (error) {
           console.log(error);
@@ -46,14 +43,36 @@ const store_module = {
       console.log("do another actions");
     },
     clicked_actions(context, times) {
-        context.commit({
-            type: "addTimes",
-            count: times
-        });
+      context.commit({
+        type: "addTimes",
+        count: times,
+      });
     },
   },
   modules: {
     // 巢狀的組件
+  },
+  getters: {
+    FemaleNumber(state) {
+      if (state.user_data) {
+        return state.user_data.filter((item) => item.gender == "female").length;
+      } else {
+        return NaN;
+      }
+    },
+    MaleNumber(state, getters) {
+      return state.user_data.length - getters.FemaleNumber;
+    },
+    IsGenderOver2: (state) => (gender) => {
+      if (!state.user_data) {
+        return;
+      }
+      if (state.user_data.filter((item) => item.gender == gender).length > 2) {
+        console.log("there are over 2 " + gender + " in data");
+      } else {
+        console.log("not over 2 " + gender + " in data");
+      }
+    },
   },
 };
 
